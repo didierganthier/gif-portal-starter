@@ -1,16 +1,15 @@
 import twitterLogo from './assets/twitter-logo.svg';
 import './App.css';
-import { useEffect, useState } from 'react';
 
 // Constants
 const TWITTER_HANDLE = 'didierganthier_';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
 
 const App = () => {
-
-  // State
-  const [walletAddress, setWalletAddress] = useState(null);
-
+  /*
+ * This function holds the logic for deciding if a Phantom Wallet is
+ * connected or not
+ */
   const checkIfWalletIsConnected = async () => {
     try {
       const { solana } = window;
@@ -18,14 +17,6 @@ const App = () => {
       if (solana) {
         if (solana.isPhantom) {
           console.log('Phantom Wallet found!');
-
-          const response = await solana.connect({ onlyIfTrusted: true });
-          console.log(
-            'Connected with Public Key: ',
-            response.publicKey.toString()
-          )
-
-          setWalletAddress(response.publicKey.toString())
         }
       } else {
         alert('Solana object not found! Get a Phantom Wallet 👻');
@@ -35,22 +26,6 @@ const App = () => {
     }
   }
 
-  const connectWallet = async () => { };
-
-  const renderNotConnecteContainer = () => (
-    <button className='cta-button connect-wallet-button'>
-      Connect to Wallet
-    </button>
-  )
-
-  useEffect(() => {
-    const onLoad = async () => {
-      await checkIfWalletIsConnected();
-    };
-    window.addEventListener('load', onLoad);
-    return () => window.removeEventListener('load', onLoad);
-  }, []);
-
   return (
     <div className="App">
       <div className="container">
@@ -59,7 +34,6 @@ const App = () => {
           <p className="sub-text">
             View your GIF collection in the metaverse ✨
           </p>
-          {!walletAddress && renderNotConnecteContainer()}
         </div>
         <div className="footer-container">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />

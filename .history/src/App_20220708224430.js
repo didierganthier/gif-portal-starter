@@ -24,8 +24,6 @@ const App = () => {
             'Connected with Public Key: ',
             response.publicKey.toString()
           )
-
-          setWalletAddress(response.publicKey.toString())
         }
       } else {
         alert('Solana object not found! Get a Phantom Wallet 👻');
@@ -59,7 +57,7 @@ const App = () => {
           <p className="sub-text">
             View your GIF collection in the metaverse ✨
           </p>
-          {!walletAddress && renderNotConnecteContainer()}
+          {renderNotConnecteContainer()}
         </div>
         <div className="footer-container">
           <img alt="Twitter Logo" className="twitter-logo" src={twitterLogo} />
