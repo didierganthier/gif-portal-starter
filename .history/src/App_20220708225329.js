@@ -46,7 +46,7 @@ const App = () => {
   };
 
   const renderNotConnecteContainer = () => (
-    <button className='cta-button connect-wallet-button' onClick={connectWallet}>
+    <button className='cta-button connect-wallet-button'>
       Connect to Wallet
     </button>
   )
