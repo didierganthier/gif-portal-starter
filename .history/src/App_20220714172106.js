@@ -90,7 +90,7 @@ const App = () => {
 
       await getGifList();
     } catch (error) {
-      console.log("Error sending GIF: ", error);
+      
     }
   }
 

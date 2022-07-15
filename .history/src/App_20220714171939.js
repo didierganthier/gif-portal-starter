@@ -86,11 +86,8 @@ const App = () => {
           user: provider.wallet.publicKey,
         },
       });
-      console.log("GIF successfully sent to program", inputValue)
-
-      await getGifList();
     } catch (error) {
-      console.log("Error sending GIF: ", error);
+      
     }
   }
 
