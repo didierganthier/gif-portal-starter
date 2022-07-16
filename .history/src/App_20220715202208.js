@@ -8,9 +8,7 @@ import kp from './keypair.json'
 
 const { SystemProgram, Keypair } = web3;
 
-const arr = Object.values(kp._keypair.secretKey);
-const secret = new Uint8Array(arr);
-const baseAccount = web3.Keypair.fromSecretKey(secret);
+let baseAccount = Keypair.generate();
 
 const programID = new PublicKey(idl.metadata.address);
 
